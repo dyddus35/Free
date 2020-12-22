@@ -1,0 +1,91 @@
+  <context-param>
+     <param-name>imgDir</param-name>
+     <param-value>/upload/img</param-value>
+  </context-param>
+  <context-param>
+     <param-name>testServerIP</param-name>
+     <param-value>127.0.0.1</param-value>
+  </context-param>
+   <context-param>
+    <param-name>realServerIP</param-name>
+    <param-value>68.0.30.1</param-value>
+  </context-param>
+  
+  
+   <servlet>
+     <servlet-name>servletEx</servlet-name>
+     <jsp-file>/First.jsp</jsp-file>
+      <init-param>
+          <param-name>adminId</param-name>
+          <param-value>admin</param-value>      
+      </init-param>
+      <init-param>
+           <param-name>adminPw</param-name>
+           <param-value>1234</param-value>
+      </init-param>
+   
+   
+   </servlet> 
+   <servlet-mapping>
+  <servlet-name>servletEx</servlet-name> 
+    <url-pattern>/First.jsp</url-pattern>
+   </servlet-mapping>
+   
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+
+  <%!
+      String adminId;
+      String adminPw;
+      
+      String imgDir;
+      String testServerIP;
+      String CIP;
+      String CUSER;
+  %>          
+
+    <%
+      adminId = config.getInitParameter("adminId");
+      adminPw = config.getInitParameter("adminPw");
+    %>
+
+    <p>adminId : <%= adminId%> </p>
+    <p>adminPw : <%= adminPw %> </p>
+ 
+      <%
+       imgDir = application.getInitParameter("imgDir");
+       testServerIP = application.getInitParameter("testServerIP");
+      %> 
+ 
+      <p>imgDir : <%= imgDir%> </p>
+      <p>testServerIP : <%= testServerIP%> </p>
+ 
+   <%
+      application.setAttribute("CIP", "15.25.36");
+      application.setAttribute("CUSER", "hong");
+   %>
+   <%
+       CIP =  (String)application.getAttribute("CIP");
+       CUSER = (String)application.getAttribute("CUSER");
+   %>
+   
+   <p>CIP : <%=  CIP %></p>
+   <p>CUSER : <%= CUSER %></p> 
+ 
+   <%
+       out.print("<h1>Hello </h1>");
+       out.print("<h2>Hello </h2>");
+       out.print("<h3>Hello </h3>");
+   %>
+ 
+ 
+</body>
+</html>
+
