@@ -1,0 +1,27 @@
+PrintWriter out = response.getWriter();
+		
+		String mId = request.getParameter("mID");
+		String mPw = request.getParameter("mPW");
+		
+		out.print("mId : " + mId);
+	    out.print("mPw : " + mPw);
+		
+		Cookie[] cookies = request.getCookies();   // 쿠키에는 여러정보가 들어올수있으니 배열로
+		Cookie cookie = null;	  //  쿠키타입의 변수생성
+	    
+		for(Cookie c : cookies ) {     
+			System.out.println("c.getName() : " + c.getName() + ", c.getValue() : " + c.getValue());
+			
+			if(c.getName().equals("memberId")) {    //meberId라는 쿠기가있다면  cookie에 값을넣어줌
+				cookie = c;
+			}
+		}           
+        if(cookie == null) {       // 쿠키에 값이 없다면  memberId 라는 새로운 쿠키를 생성한다.
+        	System.out.println("cookie is null");
+        	cookie = new Cookie("memberId", mId);    // cookie("name",value)
+        }
+			
+         response.addCookie(cookie);   //서버에 쿠키를 저장한다
+         cookie.setMaxAge(60*60);    //쿠키지속시간  60초*60초  3600초 1시간의지속시간을 갖는다.
+         response.sendRedirect("loginok.jsp");  // loginok.jsp를 보여준다
+	}
