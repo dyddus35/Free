@@ -1,0 +1,8 @@
+   <%
+        Cookie[] cookies = request.getCookies();   // 서버에 쿠키를 요청한다.
+     for(Cookie c : cookies) {
+    	  out.print("name : " + c.getName() + "<br>");
+    	  out.print("value : " + c.getValue() + "<br>");
+    	  out.print("------------------------------");
+     }
+     %>
