@@ -1,0 +1,36 @@
+import java.util.*;
+
+
+public class Number {
+   
+	public static void main(String[] args) {  
+       Scanner sc = new Scanner(System.in);
+       int a =  sc.nextInt();
+      int  d =  a;  
+      ArrayList<Integer> num = new ArrayList<>();
+       while(a >= 3) {
+    	   num.add(a%3);
+    	   a =  a/3;
+       }
+        num.add(a%3);
+       
+      Collections.reverse(num);
+      
+     if(d > 2) {
+      int sum  = num.get(0) + num.get(1)*3;  
+        for(int i = 2; i < num.size(); i++) {
+         	  int c = 1;
+        	 for(int j = 0; j < i; j++) {
+        	           c  = c * 3;
+        	 }
+        	sum += num.get(i) * c;
+         }
+        System.out.println(sum);
+     } else {
+    	   System.out.println(d);
+     }
+	
+            
+	}
+
+}
