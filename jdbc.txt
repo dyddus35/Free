@@ -1,0 +1,34 @@
+
+		String driver = "oracle.jdbc.driver.OracleDriver";   
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";  
+		String id = "c##scott";
+		String pw = "tiger";
+		
+		Connection con = null;
+		Statement stmt = null;
+		
+		try {
+			Class.forName(driver);
+			
+			con = DriverManager.getConnection(url, id, pw);
+			stmt = con.createStatement();
+			String sql = "INSERT INTO book(book_id, book_name, book_loc)";
+					sql += " VALUES (BOOK_SEQ.NEXTVAL, '" + bookName + "', '" + bookLoc + "')";
+			int result = stmt.executeUpdate(sql);
+			
+			if(result == 1) {
+				out.print("INSERT success!!");    //  업데이트에 성공햇다면 1
+			} else {
+				out.print("INSERT fail!!");     // 실패
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(stmt != null) stmt.close();  // 메모리에 적재해놧던걸 해제해주는작업
+				if(con != null) con.close();   // 동일
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
