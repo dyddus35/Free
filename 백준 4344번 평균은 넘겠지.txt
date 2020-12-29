@@ -1,0 +1,40 @@
+import java.util.*;
+
+public class asdf1 {
+
+	public static void main(String[] args) {
+		 Scanner sc =  new Scanner(System.in);
+	   int a = sc.nextInt();
+	   int sum = 0;
+	  double  g =  0;
+	  double[] bi = new double[a];
+	   for(int i = 0; i < a; i++) {
+		  int  b = sc.nextInt();
+		  int[] arr = new int[b];      
+		  for(int j = 0; j < b; j++) {
+                     int c  = sc.nextInt();
+                    
+                     arr[j]  = c;
+                    sum += c;
+                   
+                }
+	           sum =  sum / b;
+	           
+	           for(int k = 0; k < arr.length; k++) {
+	                  if(arr[k] > sum) {
+	                	  g++;
+	                  }
+	           }
+	        bi[i] = (g/b)*100;
+	        g = 0;
+	        sum = 0;
+	   }
+	 for (double i : bi) {
+		 System.out.println(String.format("%.3f", i) + "%");		 
+	 }
+	   
+		
+		
+	}
+
+}
