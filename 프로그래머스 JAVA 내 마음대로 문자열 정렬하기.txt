@@ -1,0 +1,34 @@
+public class asdf1 {
+
+	public static void main(String[] args) {
+	  Scanner sc = new Scanner(System.in);
+	  int n  = sc.nextInt();
+	 String[] strings = { "sun", "bed", "car"};
+	 String[] answer  = new String[strings.length];
+	 ArrayList<String> abs = new ArrayList<>(); 
+	 ArrayList<Integer> arr = new ArrayList<>();
+    for(int i = 0; i < strings.length; i++) {
+    	 abs.add(strings[i]);
+         arr.add((int)strings[i].charAt(n));
+    }
+      Collections.sort(abs);
+      Collections.sort(arr);
+    
+    for(int i = 0; i < strings.length; i++) {
+    	 for(int j = 1; j <= strings.length; j++) {
+    		   if(arr.get(i) == abs.get(j-1).charAt(n)) {
+    			        answer[i] = abs.get(j-1);
+    			         abs.remove(j-1);
+    			        break;
+    		   }
+    	 }
+    }
+   
+      for(String i : answer) {
+    	  System.out.println(i);
+      }
+       
+      
+     
+}
+}	
