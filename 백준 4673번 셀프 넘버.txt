@@ -1,0 +1,57 @@
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+	       
+	  SelfNumbe asd  = new SelfNumbe();
+	  
+	  asd.Self();	
+		
+	}
+	
+
+    public  static class SelfNumbe {
+    	
+    	
+    	public void  Self() {
+    	 ArrayList<Integer> con  = new ArrayList<>(); 
+    	    int sum = 0; 
+            int n = 0;
+    
+    	   for(int i = 1; i < 10000; i++) {
+    		    if(i < 10) {
+    		    	 con.add(i+i);
+    		    } else {
+    		    n = i;
+    		     sum =  0;  
+    		   for(int j = 0; j < 4; j++) {
+    		          
+    		        if(n < 100) {
+    		        	break;
+    		        }
+    		       sum = sum+n%10;
+    		       n = n /10;    
+    		   }
+    	      sum = sum+n%10+n/10+i;
+    	      
+    	      if(!con.contains(sum)) {
+    	    	      con.add(sum);  
+    	    	    }
+    		    }
+    		   
+    	   }
+    	  
+    	 	Collections.sort(con);
+    	  
+        for(int i = 1;  i < 10000; i++) {
+        	if(!con.contains(i)) {
+        		System.out.println(i);
+        	}
+        }
+    	  
+    	  
+        }
+              
+    }
+    }
